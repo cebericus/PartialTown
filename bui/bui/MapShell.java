@@ -326,6 +326,37 @@ public class MapShell {
 		}
 	}
 	
+	private void menuAndButtonCreate(
+			MenuItem menuItem, 
+			Menu menu,
+			final char placeStructure, 
+			String menuString, 
+			int bound_x_pos, int bound_y_pos, int bound_x, int bound_y, Button button,
+			String buttonString
+			) 
+	{
+		menuItem = new MenuItem(menu, SWT.NONE);
+
+		menuItem.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				placeStructure(placeStructure);
+			}
+		});
+		menuItem.setText(menuString);
+
+		button = new Button(sh, SWT.NONE);
+		button.setBounds(bound_x_pos, bound_y_pos, bound_x, bound_y);
+		button.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				placeStructure(placeStructure);
+				canvas.setFocus();
+			}
+		});
+		button.setText(buttonString);
+	}
+	
 	/**
 	 * destructor for SWT must dispose of all resources created with new.
 	 */
@@ -537,192 +568,137 @@ public class MapShell {
 		mntmStructures_1.setMenu(menu_4);
 		
 		/**
+		 * TODO: iterable structure to make these controls.
+		 * 
 		 * Menu -> Plats -> Structures -> CoalPowerPlant
 		 */
-		MenuItem mntmCoalPowerPlant = new MenuItem(menu_4, SWT.NONE);
-		mntmCoalPowerPlant.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'O' );
-			}
-		});
-		mntmCoalPowerPlant.setText("Coal Power Plant");
+		MenuItem mntmCoalPowerPlant = null;
+		Button btnCoal = null;
 		
-		Button btnCoal = new Button(sh, SWT.NONE);
-		btnCoal.setBounds(6, 388, 128, 26);
-		btnCoal.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'O' );
-				canvas.setFocus();
-			}
-		});
-		btnCoal.setText("Coal");
+		menuAndButtonCreate(
+				menu_4,
+				mntmCoalPowerPlant,
+				'O',
+				"Coal Power Plant",
+				6, 388, 128, 26,
+				btnCoal,
+				"Coal"
+				);
 		
 		/**
 		 * Menu -> Plats -> Structures -> NaturalGasPowerPlant
 		 */
-		MenuItem mntmNaturalGasPlant = new MenuItem(menu_4, SWT.NONE);
-		mntmNaturalGasPlant.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'N' );
-			}
-		});
-		mntmNaturalGasPlant.setText("Natural Gas Power Plant");
+		MenuItem mntmNaturalGasPlant = null;
+		Button btnGas = null;
 		
-		Button btnGas = new Button(sh, SWT.NONE);
-		btnGas.setBounds(6, 420, 128, 26);
-		btnGas.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'N' );
-				canvas.setFocus();
-			}
-		});
-		btnGas.setText("NatGas");
+		menuAndButtonCreate(
+				menu_4,
+				mntmNaturalGasPlant,
+				'N',
+				"Natural Gas Power Plant",
+				6, 420, 128, 26,
+				btnGas,
+				"NatGas"
+				);
 		
 		/**
 		 * Menu -> Plats -> Structures -> Park
 		 */
-		MenuItem mntmPark = new MenuItem(menu_4, SWT.NONE);
-		mntmPark.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'K' );
-			}
-		});
-		mntmPark.setText("Park");
+		MenuItem mntmPark = null;
+		Button btnParks = null;
 		
-		Button btnParks = new Button(sh, SWT.NONE);
-		btnParks.setText("Parks");
-		btnParks.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'K' );
-				canvas.setFocus();
-			}
-		});
-		btnParks.setBounds(6, 484, 128, 26);
+		menuAndButtonCreate(
+				menu_4,
+				mntmPark,
+				'K',
+				"Parks and Recreation",
+				6, 484, 128, 26,
+				btnParks,
+				"Parks"
+				);
 		
 		/**
 		 * Menu -> Plats -> Structures -> PoliceStation
 		 */
-		MenuItem mntmPoliceStation = new MenuItem(menu_4, SWT.NONE);
-		mntmPoliceStation.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'P' );
-			}
-		});
-		mntmPoliceStation.setText("Police Station");
+		MenuItem mntmPoliceStation = null;
+		Button btnPolice = null;
 		
-		Button btnPolice = new Button(sh, SWT.NONE);
-		btnPolice.setBounds(6, 452, 128, 26);
-		btnPolice.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'P' );
-				canvas.setFocus();
-			}
-		});
-		btnPolice.setText("Police");
+		menuAndButtonCreate(
+				menu_4,
+				mntmPoliceStation,
+				'P',
+				"Police Station",
+				6, 452, 128, 26,
+				btnPolice,
+				"Police"
+				);
 		
 		/**
 		 * Menu -> Plats -> Structures -> Road
 		 */
-		MenuItem mntmRoad = new MenuItem(menu_4, SWT.NONE);
-		mntmRoad.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'A' );
-			}
-		});
-		mntmRoad.setText("Road");
+		MenuItem mntmRoad = null;
+		Button btnRoad = null;
 		
-		Button btnRoads = new Button(sh, SWT.NONE);
-		btnRoads.setBounds(6, 516, 128, 26);
-		btnRoads.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'A' );
-				canvas.setFocus();
-			}
-		});
-		btnRoads.setText("Roads");
+		menuAndButtonCreate(
+				menu_4,
+				mntmRoad,
+				'A',
+				"Roads",
+				6, 516, 128, 26,
+				btnRoad,
+				"Roads"
+				);
 		
 		/**
 		 * Menu -> Plats -> Structures -> SolarPowerArray
 		 */
-		MenuItem mntmSolarPowerArray = new MenuItem(menu_4, SWT.NONE);
-		mntmSolarPowerArray.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'L' );
-			}
-		});
-		mntmSolarPowerArray.setText("Solar Power Array");
+		MenuItem mntmSolarPowerArray = null;
+		Button btnSolarPowerArray = null;
 		
-		Button btnSolar = new Button(sh, SWT.NONE);
-		btnSolar.setBounds(6, 548, 128, 26);
-		btnSolar.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'L' );
-				canvas.setFocus();
-			}
-		});
-		btnSolar.setText("Solar");
+		menuAndButtonCreate(
+				menu_4,
+				mntmSolarPowerArray,
+				'L',
+				"Solar Power Array",
+				6, 548, 128, 26,
+				btnSolarPowerArray,
+				"Solar"
+				);
 		
 		/**
 		 * Menu -> Plats -> Structures -> SewageTreatmentPlant
 		 */
-		MenuItem mntmSewageTreatmentPlant = new MenuItem(menu_4, SWT.NONE);
-		mntmSewageTreatmentPlant.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'S' );
-			}
-		});
-		mntmSewageTreatmentPlant.setText("Sewage Treatment Plant");
+		MenuItem mntmSewageTreatmentPlant = null;
+		Button btnSewageTreatmentPlant = null;
 		
-		Button btnSewage = new Button(sh, SWT.NONE);
-		btnSewage.setBounds(6, 580, 128, 26);
-		btnSewage.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'S' );
-				canvas.setFocus();
-			}
-		});
-		btnSewage.setText("Sewage");
+		menuAndButtonCreate(
+				menu_4,
+				mntmSewageTreatmentPlant,
+				'S',
+				"Sewage Treatment Plant",
+				6, 580, 128, 26,
+				btnSewageTreatmentPlant,
+				"Sewage"
+				);
 		
 		/**
 		 * Menu -> Plats -> Structures -> WindPowerFarm
 		 */
-		MenuItem mntmWindPowerFarm = new MenuItem(menu_4, SWT.NONE);
-		mntmWindPowerFarm.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'E' );
-			}
-		});
-		mntmWindPowerFarm.setText("Wind Power Farm");
+		MenuItem mntmWindPowerFarm = null;
+		Button btnWindPowerFarm = null;
 		
-		Button btnWind = new Button(sh, SWT.NONE);
-		btnWind.setBounds(6, 612, 128, 26);
-		btnWind.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeStructure( 'E' );
-				canvas.setFocus();
-			}
-		});
-		btnWind.setText("Wind");
-		
+		menuAndButtonCreate(
+				menu_4,
+				mntmWindPowerFarm,
+				'E' ,
+				"Wind Power Farm",
+				6, 612, 128, 26,
+				btnWindPowerFarm,
+				"Wind"
+				);
 		
 		MenuItem mntmGeography = new MenuItem(menu_2, SWT.CASCADE);
-		mntmGeography.setText("StatGeography");
+		mntmGeography.setText("Geography");
 		
 		Menu menu_5 = new Menu(mntmGeography);
 		mntmGeography.setMenu(menu_5);
