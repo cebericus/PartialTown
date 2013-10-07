@@ -1,0 +1,52 @@
+//			/** initialize GC for this Canvas */
+//			GC gc = new GC( this );
+//
+//
+////			Region region = new Region( curr_display );
+////			region.add( tmp_x, tmp_y, 50, 50 );
+//			//gc.setClipping(region);
+//			//gc.drawLine(0, 0, tmp_x,tmp_y);
+//			//gc.setAlpha( 64 );
+//			
+////			Color color = new Color( curr_display, 127, 127 ,127 );
+////			gc.setBackground(color);
+//			
+//			
+//			int [] hilite = {
+//					tmp_x-1, 				tmp_y - Img.y_adj-1, 
+//					tmp_x + Img.x_adj-1, 	tmp_y-1,
+//					tmp_x-1, 				tmp_y + Img.y_adj-1,
+//					tmp_x - Img.x_adj-1, 	tmp_y-1
+//			};
+//
+//			int [] fill = {
+//					tmp_x-4, 				tmp_y - Img.y_adj-4, 
+//					tmp_x + Img.x_adj-4, 	tmp_y-4,
+//					tmp_x-4, 				tmp_y + Img.y_adj-4,
+//					tmp_x - Img.x_adj-4, 	tmp_y-4
+//			};
+//			
+//			//region.dispose();
+//
+//			//Color color = new Color( curr_display, 200, 0, 0 );
+//			//gc.setBackground(color);
+//			//gc.setLineWidth(3);			
+//			
+//			Color black = new Color( curr_display, 255, 255, 255 );
+//			
+//
+//			gc.setLineWidth(3);
+//			gc.setBackground( black );
+//			gc.drawPolygon( hilite );
+//			gc.setAlpha(64);
+//			gc.fillPolygon( hilite );
+//			//gc.fillOval(tmp_x - Img.x_adj, tmp_y - Img.y_adj, 
+//			//				Img.x_adj * 2, Img.y_adj * 2 );
+//			
+//			gc.dispose();
+\
+
+
+
+		//fileChooser.setFilterNames( new String[] { "SWT image" + " (gif, jpeg, png, ico, bmp)" });
+			
