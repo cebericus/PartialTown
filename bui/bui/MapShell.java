@@ -150,24 +150,14 @@ public class MapShell {
 		dateTime.setBounds(10, 6, 124, 29);
 
 		/** Associated Buttons are in createContents() */
-		Label labelZoning = new Label(sh, SWT.SHADOW_IN | SWT.RIGHT);
-		labelZoning.setText("Zoning");
-		labelZoning.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		labelZoning.setAlignment(SWT.CENTER);
-		labelZoning.setBounds(6, 220, 128, 14);
+		Label labelZoning = null;
+		sidebarLabels(labelZoning, "Zoning", 6, 220, 128, 14);
 		
-		/** Associated Buttons are in createContents() */
-		Label labelStructures = new Label(sh, SWT.SHADOW_IN | SWT.RIGHT);
-		labelStructures.setText("Structures");
-		labelStructures.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		labelStructures.setAlignment(SWT.CENTER);
-		labelStructures.setBounds(6, 368, 128, 14);
+		Label labelStructures = null;		
+		sidebarLabels(labelStructures, "Structures", 6, 368, 128, 14);
 		
-		Label lblMayoralPopularity = new Label(sh, SWT.SHADOW_IN | SWT.RIGHT);
-		lblMayoralPopularity.setText("Mayoral Popularity");
-		lblMayoralPopularity.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		lblMayoralPopularity.setAlignment(SWT.CENTER);
-		lblMayoralPopularity.setBounds(6, 644, 128, 14);
+		Label lblMayoralPopularity = null;
+		sidebarLabels(lblMayoralPopularity, "Mayoral Popularity", 6, 644, 128, 14);
 		
 		Label lblMayoralSentiment = new Label(sh, SWT.BORDER | SWT.SHADOW_IN);
 		lblMayoralSentiment.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
@@ -180,11 +170,8 @@ public class MapShell {
 		MayorPercentage.setText("-99%");
 		MayorPercentage.setBounds(9, 659, 59, 24);
 
-		Label lblCitizens = new Label(sh, SWT.SHADOW_IN | SWT.RIGHT);
-		lblCitizens.setText("Citizens");
-		lblCitizens.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		lblCitizens.setAlignment(SWT.CENTER);
-		lblCitizens.setBounds(6, 689, 128, 14);
+		Label lblCitizens = null;
+		sidebarLabels(lblCitizens, "Citizens", 6, 689, 128, 14);
 		
 		CitizensTotalNumber = new Text(sh, SWT.BORDER | SWT.RIGHT);
 		CitizensTotalNumber.setBounds(9, 704, 59, 24);
@@ -192,11 +179,8 @@ public class MapShell {
 		CitizensPercentageHappy = new Text(sh, SWT.BORDER | SWT.RIGHT);
 		CitizensPercentageHappy.setBounds(75, 704, 59, 24);
 		
-		Label lblBusiness = new Label(sh, SWT.SHADOW_IN | SWT.RIGHT);
-		lblBusiness.setText("Business");
-		lblBusiness.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		lblBusiness.setAlignment(SWT.CENTER);
-		lblBusiness.setBounds(6, 764, 128, 14);
+		Label lblBusiness = null;
+		sidebarLabels(lblBusiness, "Business", 6, 764, 128, 14);
 		
 		BusinessTotal = new Text(sh, SWT.BORDER | SWT.RIGHT);
 		BusinessTotal.setBounds(9, 779, 59, 24);
@@ -204,11 +188,8 @@ public class MapShell {
 		BusinessCommercial = new Text(sh, SWT.BORDER | SWT.RIGHT);
 		BusinessCommercial.setBounds(75, 779, 59, 24);
 		
-		Label lblRevenues = new Label(sh, SWT.SHADOW_IN | SWT.RIGHT);
-		lblRevenues.setText("Jobs");
-		lblRevenues.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		lblRevenues.setAlignment(SWT.CENTER);
-		lblRevenues.setBounds(6, 839, 128, 14);
+		Label lblJobs = null;
+		sidebarLabels(lblJobs, "Jobs", 6, 839, 128, 14);
 		
 		JobsTotal = new Text(sh, SWT.BORDER | SWT.RIGHT);
 		JobsTotal.setBounds(9, 854, 59, 24);
@@ -216,11 +197,8 @@ public class MapShell {
 		JobsUnemployment = new Text(sh, SWT.BORDER | SWT.RIGHT);
 		JobsUnemployment.setBounds(75, 854, 59, 24);
 		
-		Label label = new Label(sh, SWT.SHADOW_IN | SWT.RIGHT);
-		label.setText("Revenues");
-		label.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		label.setAlignment(SWT.CENTER);
-		label.setBounds(6, 884, 128, 14);
+		Label lblRevenues = null;
+		sidebarLabels(lblRevenues, "Revenues", 6, 884, 128, 14);
 		
 		RevenuesTotal = new Text(sh, SWT.BORDER | SWT.RIGHT);
 		RevenuesTotal.setBounds(9, 899, 59, 24);
@@ -228,11 +206,9 @@ public class MapShell {
 		PropertyValue = new Text(sh, SWT.BORDER | SWT.RIGHT);
 		PropertyValue.setBounds(75, 899, 59, 24);
 		float_sh.open();
-		Label lblPollution = new Label(sh, SWT.SHADOW_IN | SWT.RIGHT);
-		lblPollution.setText("Pollution");
-		lblPollution.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
-		lblPollution.setAlignment(SWT.CENTER);
-		lblPollution.setBounds(6, 929, 128, 14);
+		
+		Label lblPollution = null;
+		sidebarLabels(lblPollution, "Pollution", 6, 929, 128, 14);
 		
 		PollutionGenerated = new Text(sh, SWT.BORDER | SWT.RIGHT);
 		PollutionGenerated.setBounds(9, 944, 59, 24);
@@ -326,12 +302,26 @@ public class MapShell {
 		}
 	}
 	
+	private void sidebarLabels(
+		Label label,
+		String text,
+		int bound_x_pos, int bound_y_pos, int bound_x, int bound_y
+		)
+	{
+		label = new Label(sh, SWT.SHADOW_IN | SWT.RIGHT);
+		label.setText(text);
+		label.setBackground(SWTResourceManager.getColor(SWT.COLOR_GRAY));
+		label.setAlignment(SWT.CENTER);
+		label.setBounds(bound_x_pos, bound_y_pos, bound_x, bound_y);
+	}
+	
 	private void menuAndButtonCreate(
-			MenuItem menuItem, 
 			Menu menu,
+			MenuItem menuItem, 
 			final char placeStructure, 
 			String menuString, 
-			int bound_x_pos, int bound_y_pos, int bound_x, int bound_y, Button button,
+			int bound_x_pos, int bound_y_pos, int bound_x, int bound_y, 
+			Button button,
 			String buttonString
 			) 
 	{
@@ -461,7 +451,6 @@ public class MapShell {
 		Menu menu_1 = new Menu(mntmZoning);
 		mntmZoning.setMenu(menu_1);
 		
-		
 		/**
 		 * Menu -> Plats -> Zoning -> Commercial
 		 */
@@ -574,7 +563,6 @@ public class MapShell {
 		 */
 		MenuItem mntmCoalPowerPlant = null;
 		Button btnCoal = null;
-		
 		menuAndButtonCreate(
 				menu_4,
 				mntmCoalPowerPlant,
@@ -590,7 +578,6 @@ public class MapShell {
 		 */
 		MenuItem mntmNaturalGasPlant = null;
 		Button btnGas = null;
-		
 		menuAndButtonCreate(
 				menu_4,
 				mntmNaturalGasPlant,
@@ -606,7 +593,6 @@ public class MapShell {
 		 */
 		MenuItem mntmPark = null;
 		Button btnParks = null;
-		
 		menuAndButtonCreate(
 				menu_4,
 				mntmPark,
@@ -622,7 +608,6 @@ public class MapShell {
 		 */
 		MenuItem mntmPoliceStation = null;
 		Button btnPolice = null;
-		
 		menuAndButtonCreate(
 				menu_4,
 				mntmPoliceStation,
@@ -638,7 +623,6 @@ public class MapShell {
 		 */
 		MenuItem mntmRoad = null;
 		Button btnRoad = null;
-		
 		menuAndButtonCreate(
 				menu_4,
 				mntmRoad,
@@ -654,7 +638,6 @@ public class MapShell {
 		 */
 		MenuItem mntmSolarPowerArray = null;
 		Button btnSolarPowerArray = null;
-		
 		menuAndButtonCreate(
 				menu_4,
 				mntmSolarPowerArray,
@@ -670,7 +653,6 @@ public class MapShell {
 		 */
 		MenuItem mntmSewageTreatmentPlant = null;
 		Button btnSewageTreatmentPlant = null;
-		
 		menuAndButtonCreate(
 				menu_4,
 				mntmSewageTreatmentPlant,
@@ -686,7 +668,6 @@ public class MapShell {
 		 */
 		MenuItem mntmWindPowerFarm = null;
 		Button btnWindPowerFarm = null;
-		
 		menuAndButtonCreate(
 				menu_4,
 				mntmWindPowerFarm,
