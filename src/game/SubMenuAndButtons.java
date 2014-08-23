@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 
 /**
- * @author sgk
+ * @author nelsoncs
  *
  */
 public class SubMenuAndButtons {

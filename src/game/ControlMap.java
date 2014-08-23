@@ -4,7 +4,7 @@
 package game;
 
 /**
- * @author sgk
+ * @author nelsoncs
  *
  */
 public class ControlMap {

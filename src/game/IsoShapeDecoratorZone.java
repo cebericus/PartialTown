@@ -9,7 +9,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
 
 /**
- * @author sgk
+ * @author nelsoncs
  *
  */
 public class IsoShapeDecoratorZone extends IsoShapeDecorator {

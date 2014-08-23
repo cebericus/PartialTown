@@ -490,8 +490,12 @@ public class MapShell {
 		Button btnCoal = null;
 		SubMenuAndButtons coal = new SubMenuAndButtons(
 				sh, canvas,
-				menu, mntmCoalPowerPlant, 'O',
-				"Coal Power Plant", 6, 388, 128, 26, btnCoal, "Coal");
+				menu, mntmCoalPowerPlant, 
+				StatMapControls.COAL.code(), StatMapControls.COAL.str(), 
+				StatMapControls.COAL.bound_x_pos(), StatMapControls.COAL.bound_y_pos(), 
+				StatMapControls.COAL.bound_x(), StatMapControls.COAL.bound_y(), 
+				btnCoal, StatMapControls.COAL.button()
+				);
 
 		/**
 		 * Menu -> Plats -> Structures -> NaturalGasPowerPlant
@@ -500,18 +504,12 @@ public class MapShell {
 		Button btnGas = null;
 		SubMenuAndButtons gas = new SubMenuAndButtons(
 				sh, canvas,
-				menu, mntmNaturalGasPlant, 'N',
-				"Natural Gas Power Plant", 6, 420, 128, 26, btnGas, "NatGas");
-
-		/**
-		 * Menu -> Plats -> Structures -> Park
-		 */
-		MenuItem mntmPark = null;
-		Button btnParks = null;
-		SubMenuAndButtons park = new SubMenuAndButtons(
-				sh, canvas,
-				menu, mntmPark, 'K', "Parks and Recreation", 6,
-				484, 128, 26, btnParks, "Parks");
+				menu, mntmNaturalGasPlant,
+				StatMapControls.GAS.code(), StatMapControls.GAS.str(), 
+				StatMapControls.GAS.bound_x_pos(), StatMapControls.GAS.bound_y_pos(), 
+				StatMapControls.GAS.bound_x(), StatMapControls.GAS.bound_y(), 
+				btnGas, StatMapControls.GAS.button()
+				);
 
 		/**
 		 * Menu -> Plats -> Structures -> PoliceStation
@@ -520,9 +518,27 @@ public class MapShell {
 		Button btnPolice = null;
 		SubMenuAndButtons police = new SubMenuAndButtons(
 				sh, canvas,
-				menu, mntmPoliceStation, 'P', "Police Station",
-				6, 452, 128, 26, btnPolice, "Police");
+				menu, mntmPoliceStation,
+				StatMapControls.POLICE.code(), StatMapControls.POLICE.str(), 
+				StatMapControls.POLICE.bound_x_pos(), StatMapControls.POLICE.bound_y_pos(), 
+				StatMapControls.POLICE.bound_x(), StatMapControls.POLICE.bound_y(), 
+				btnPolice, StatMapControls.POLICE.button()
+				);
 
+		/**
+		 * Menu -> Plats -> Structures -> Park
+		 */
+		MenuItem mntmPark = null;
+		Button btnParks = null;
+		SubMenuAndButtons park = new SubMenuAndButtons(
+				sh, canvas,
+				menu, mntmPark, 
+				StatMapControls.PARKS.code(), StatMapControls.PARKS.str(), 
+				StatMapControls.PARKS.bound_x_pos(), StatMapControls.PARKS.bound_y_pos(), 
+				StatMapControls.PARKS.bound_x(), StatMapControls.PARKS.bound_y(),
+				btnParks, StatMapControls.PARKS.button()
+				);
+		
 		/**
 		 * Menu -> Plats -> Structures -> Road
 		 */
@@ -530,8 +546,12 @@ public class MapShell {
 		Button btnRoad = null;
 		SubMenuAndButtons road = new SubMenuAndButtons(
 				sh, canvas,
-				menu, mntmRoad, 'A', "Roads", 6, 516, 128, 26,
-				btnRoad, "Roads");
+				menu, mntmRoad, 
+				StatMapControls.ROADS.code(), StatMapControls.ROADS.str(), 
+				StatMapControls.ROADS.bound_x_pos(), StatMapControls.ROADS.bound_y_pos(), 
+				StatMapControls.ROADS.bound_x(), StatMapControls.ROADS.bound_y(),
+				btnRoad, StatMapControls.ROADS.button()
+				);
 
 		/**
 		 * Menu -> Plats -> Structures -> SolarPowerArray
@@ -540,9 +560,12 @@ public class MapShell {
 		Button btnSolarPowerArray = null;
 		SubMenuAndButtons solar = new SubMenuAndButtons(
 				sh, canvas,
-				menu, mntmSolarPowerArray, 'L',
-				"Solar Power Array", 6, 548, 128, 26, btnSolarPowerArray,
-				"Solar");
+				menu, mntmSolarPowerArray,
+				StatMapControls.SOLAR.code(), StatMapControls.SOLAR.str(), 
+				StatMapControls.SOLAR.bound_x_pos(), StatMapControls.SOLAR.bound_y_pos(), 
+				StatMapControls.SOLAR.bound_x(), StatMapControls.SOLAR.bound_y(), 
+				btnSolarPowerArray, StatMapControls.SOLAR.button()
+				);
 
 		/**
 		 * Menu -> Plats -> Structures -> SewageTreatmentPlant
@@ -551,9 +574,12 @@ public class MapShell {
 		Button btnSewageTreatmentPlant = null;
 		SubMenuAndButtons sewage = new SubMenuAndButtons(
 				sh, canvas,
-				menu, mntmSewageTreatmentPlant, 'S',
-				"Sewage Treatment Plant", 6, 580, 128, 26,
-				btnSewageTreatmentPlant, "Sewage");
+				menu, mntmSewageTreatmentPlant, 
+				StatMapControls.SEWAGE.code(), StatMapControls.SEWAGE.str(), 
+				StatMapControls.SEWAGE.bound_x_pos(), StatMapControls.SEWAGE.bound_y_pos(), 
+				StatMapControls.SEWAGE.bound_x(), StatMapControls.SEWAGE.bound_y(), 
+				btnSewageTreatmentPlant, StatMapControls.SEWAGE.button()
+				);
 
 		/**
 		 * Menu -> Plats -> Structures -> WindPowerFarm
@@ -562,8 +588,12 @@ public class MapShell {
 		Button btnWindPowerFarm = null;
 		SubMenuAndButtons wind = new SubMenuAndButtons(
 				sh, canvas,
-				menu, mntmWindPowerFarm, 'E', "Wind Power Farm",
-				6, 612, 128, 26, btnWindPowerFarm, "Wind");
+				menu, mntmWindPowerFarm,
+				StatMapControls.WIND.code(), StatMapControls.WIND.str(), 
+				StatMapControls.WIND.bound_x_pos(), StatMapControls.WIND.bound_y_pos(), 
+				StatMapControls.WIND.bound_x(), StatMapControls.WIND.bound_y(), 
+				btnWindPowerFarm, StatMapControls.WIND.button()
+				);
 	}
 	
 	/**
