@@ -4,7 +4,7 @@ package game;
 /**
  * @author nelsoncs
 *
- * Used by SubMenuAndButtons.class
+ * Used by GameMenusAndButtons.class
  * char code, String str, 
 *  int bound_x_pos, int bound_y_pos, 
 *  int bound_x,        int bound_y, 
@@ -13,6 +13,26 @@ package game;
  */
 public enum StatMapControls {
 
+	/**
+	 * Menu -> Plats -> Zoning -> Commercial
+	 */
+	COMMERCIAL('C', "Commercial",              6, 240, 128, 26, " Commercial"),
+	
+	/**
+	 * Menu -> Plats -> Zoning -> Industrial
+	 */
+	INDUSTRIAL('I', "Industrial",                    6, 272, 128, 26, " Industrial"),
+	
+	/**
+	 * Menu -> Plats -> Zoning -> Residential
+	 */
+	RESIDENTIAL('R', "Residential",                6, 304, 128, 26,  "Residential"),
+	
+	/**
+	 * Menu -> Plats -> Zoning -> Unzoned
+	 */
+	UNZONED('U', "Unzoned",                        6, 336, 128, 26, "    Unzoned"),
+	
   /**
    * Menu -> Plats -> Structures -> CoalPowerPlant
    */

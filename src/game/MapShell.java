@@ -1,8 +1,9 @@
 package game;
 
+import java.util.HashMap;
+
 import org.eclipse.swt.*;
 import org.eclipse.swt.widgets.*;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -10,7 +11,6 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
-
 import org.eclipse.wb.swt.SWTResourceManager;
 
 /**
@@ -26,6 +26,8 @@ public class MapShell {
 	Shell sh;
 	MapCanvas canvas;
 	MapMiniCanvas mini_canvas;
+	
+	HashMap  menusAndButtons;
 
 	GameMap map;
 	ImgSet map_images;
@@ -94,6 +96,7 @@ public class MapShell {
 		DateTime dateTime = new DateTime(sh, SWT.BORDER);
 		dateTime.setBounds(10, 6, 124, 29);
 		
+		this.menusAndButtons = new HashMap<StatMapControls, GameMenusAndButtons>();
 		this.createBaseMenus();
 
 		this.createDataDisplays();
@@ -194,8 +197,7 @@ public class MapShell {
 		sidebarLabels(labelStructures, "Structures", 6, 368, 128, 14);
 
 		Label lblMayoralPopularity = null;
-		sidebarLabels(lblMayoralPopularity, "Mayoral Popularity", 6, 644, 128,
-				14);
+		sidebarLabels(lblMayoralPopularity, "Mayoral Popularity", 6, 644, 128, 14);
 
 		Label lblMayoralSentiment = new Label(sh, SWT.BORDER | SWT.SHADOW_IN);
 		lblMayoralSentiment.setBackground(SWTResourceManager
@@ -369,97 +371,10 @@ public class MapShell {
 		mntmZoning.setMenu(menu_1);
 
 		/**
-		 * Menu -> Plats -> Zoning -> Commercial
-		 */
-		MenuItem mntmCommercial = new MenuItem(menu_1, SWT.NONE);
-		//
-		// canvas.addListener (SWT.Paint, new Listener () {
-		// public void handleEvent (Event event) {
-		// placeImage( event );
-		// }
-		// });
-
-		mntmCommercial.addSelectionListener(new SelectionAdapter() {
-			// @Override
-			// public void widgetDefaultSelected(SelectionEvent event) {
-			// placeImage();
-			// }
-
-			// @Override
-			// public void widgetSelected(SelectionEvent e) {
-			// placeImage( 'O' );
-			// }
-		});
-		mntmCommercial.setText("Commercial");
-
-		Button btnCommercial = new Button(sh, SWT.NONE);
-		btnCommercial.setBounds(6, 240, 128, 26);
-		btnCommercial.setText(" Commercial");
-
-		// image = new Image( display,
-		// map_images.getZone_list().clone()[1].getImage().getImageData().scaledTo(40,40));
-		// btnCommercial.setImage( image );
-		// image.dispose();
-
-		/**
-		 * Menu -> Plats -> Zoning -> Industrial
-		 */
-		MenuItem mntmIndustrial = new MenuItem(menu_1, SWT.NONE);
-		mntmIndustrial.setText("Industrial");
-
-		Button btnIndustrial = new Button(sh, SWT.NONE);
-		btnIndustrial.setBounds(6, 272, 128, 26);
-		btnIndustrial.setText(" Industrial");
-
-		// to do ----> should be a separate function for button images
-		// Image image = new Image( display,
-		// map_images.getZone_list().clone()[0].getImage().getImageData().scaledTo(40,40));
-		// btnIndustrial.setImage( image );
-		// image.dispose();
-
-		/**
-		 * Menu -> Plats -> Zoning -> Residential
-		 */
-		MenuItem mntmResidential = new MenuItem(menu_1, SWT.NONE);
-		mntmResidential.setText("Residential");
-
-		Button btnResidential = new Button(sh, SWT.NONE);
-		btnResidential.setBounds(6, 304, 128, 26);
-		btnResidential.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				placeZone('R');
-
-				// IsoShapeDecoratorZone z = new IsoShapeDecoratorZone(
-				// (new IsoShapeBase(canvas,
-				// canvas.map.getActive_tile().getX_pix(),
-				// canvas.map.getActive_tile().getY_pix(), SWT.NULL)) );
-				// z.draw("R");
-
-				canvas.setFocus();
-			}
-		});
-		btnResidential.setText("Residential");
-
-		/**
-		 * set a mini-image in the button // image = new Image( display, //
+		 * TODO ? set a mini-image in the button // image = new Image( display, //
 		 * map_images
 		 * .getZone_list().clone()[2].getImage().getImageData().scaledTo(40,40));
 		 * // btnResidential.setImage( image ); // image.dispose();
-		 * 
-		 * /** Menu -> Plats -> Zoning -> Unzoned
-		 */
-		MenuItem mntmUnzoned = new MenuItem(menu_1, SWT.NONE);
-		mntmUnzoned.setText("Unzoned");
-
-		Button btnUnzoned = new Button(sh, SWT.NONE);
-		btnUnzoned.setBounds(6, 336, 128, 26);
-		btnUnzoned.setText("    Unzoned");
-
-		// image = new Image( display,
-		// map_images.getZone_list().clone()[3].getImage().getImageData().scaledTo(40,40));
-		// btnUnzoned.setImage( image );
-		// image.dispose();
 
 		/**
 		 * Menu -> Plats -> Structures
@@ -473,127 +388,27 @@ public class MapShell {
 		Menu menu_4 = new Menu(mntmStructures_1);
 		mntmStructures_1.setMenu(menu_4);
 		
-		this.createStructures(menu_4);
+		this.createMenusAndButtons(menu_4);
 	}
 	
-
 	/**
 	 * 
 	 */
-	private void createStructures(Menu menu) {
-		/**
-		 * TODO: iterable structure to make these controls.
-		 * 
-		 * Menu -> Plats -> Structures -> CoalPowerPlant
-		 */
-		MenuItem mntmCoalPowerPlant = null;
-		Button btnCoal = null;
-		SubMenuAndButtons coal = new SubMenuAndButtons(
-				sh, canvas,
-				menu, mntmCoalPowerPlant, 
-				StatMapControls.COAL.code(), StatMapControls.COAL.str(), 
-				StatMapControls.COAL.bound_x_pos(), StatMapControls.COAL.bound_y_pos(), 
-				StatMapControls.COAL.bound_x(), StatMapControls.COAL.bound_y(), 
-				btnCoal, StatMapControls.COAL.button()
-				);
-
-		/**
-		 * Menu -> Plats -> Structures -> NaturalGasPowerPlant
-		 */
-		MenuItem mntmNaturalGasPlant = null;
-		Button btnGas = null;
-		SubMenuAndButtons gas = new SubMenuAndButtons(
-				sh, canvas,
-				menu, mntmNaturalGasPlant,
-				StatMapControls.GAS.code(), StatMapControls.GAS.str(), 
-				StatMapControls.GAS.bound_x_pos(), StatMapControls.GAS.bound_y_pos(), 
-				StatMapControls.GAS.bound_x(), StatMapControls.GAS.bound_y(), 
-				btnGas, StatMapControls.GAS.button()
-				);
-
-		/**
-		 * Menu -> Plats -> Structures -> PoliceStation
-		 */
-		MenuItem mntmPoliceStation = null;
-		Button btnPolice = null;
-		SubMenuAndButtons police = new SubMenuAndButtons(
-				sh, canvas,
-				menu, mntmPoliceStation,
-				StatMapControls.POLICE.code(), StatMapControls.POLICE.str(), 
-				StatMapControls.POLICE.bound_x_pos(), StatMapControls.POLICE.bound_y_pos(), 
-				StatMapControls.POLICE.bound_x(), StatMapControls.POLICE.bound_y(), 
-				btnPolice, StatMapControls.POLICE.button()
-				);
-
-		/**
-		 * Menu -> Plats -> Structures -> Park
-		 */
-		MenuItem mntmPark = null;
-		Button btnParks = null;
-		SubMenuAndButtons park = new SubMenuAndButtons(
-				sh, canvas,
-				menu, mntmPark, 
-				StatMapControls.PARKS.code(), StatMapControls.PARKS.str(), 
-				StatMapControls.PARKS.bound_x_pos(), StatMapControls.PARKS.bound_y_pos(), 
-				StatMapControls.PARKS.bound_x(), StatMapControls.PARKS.bound_y(),
-				btnParks, StatMapControls.PARKS.button()
-				);
+	private void createMenusAndButtons(Menu menu) {
 		
-		/**
-		 * Menu -> Plats -> Structures -> Road
-		 */
-		MenuItem mntmRoad = null;
-		Button btnRoad = null;
-		SubMenuAndButtons road = new SubMenuAndButtons(
-				sh, canvas,
-				menu, mntmRoad, 
-				StatMapControls.ROADS.code(), StatMapControls.ROADS.str(), 
-				StatMapControls.ROADS.bound_x_pos(), StatMapControls.ROADS.bound_y_pos(), 
-				StatMapControls.ROADS.bound_x(), StatMapControls.ROADS.bound_y(),
-				btnRoad, StatMapControls.ROADS.button()
-				);
-
-		/**
-		 * Menu -> Plats -> Structures -> SolarPowerArray
-		 */
-		MenuItem mntmSolarPowerArray = null;
-		Button btnSolarPowerArray = null;
-		SubMenuAndButtons solar = new SubMenuAndButtons(
-				sh, canvas,
-				menu, mntmSolarPowerArray,
-				StatMapControls.SOLAR.code(), StatMapControls.SOLAR.str(), 
-				StatMapControls.SOLAR.bound_x_pos(), StatMapControls.SOLAR.bound_y_pos(), 
-				StatMapControls.SOLAR.bound_x(), StatMapControls.SOLAR.bound_y(), 
-				btnSolarPowerArray, StatMapControls.SOLAR.button()
-				);
-
-		/**
-		 * Menu -> Plats -> Structures -> SewageTreatmentPlant
-		 */
-		MenuItem mntmSewageTreatmentPlant = null;
-		Button btnSewageTreatmentPlant = null;
-		SubMenuAndButtons sewage = new SubMenuAndButtons(
-				sh, canvas,
-				menu, mntmSewageTreatmentPlant, 
-				StatMapControls.SEWAGE.code(), StatMapControls.SEWAGE.str(), 
-				StatMapControls.SEWAGE.bound_x_pos(), StatMapControls.SEWAGE.bound_y_pos(), 
-				StatMapControls.SEWAGE.bound_x(), StatMapControls.SEWAGE.bound_y(), 
-				btnSewageTreatmentPlant, StatMapControls.SEWAGE.button()
-				);
-
-		/**
-		 * Menu -> Plats -> Structures -> WindPowerFarm
-		 */
-		MenuItem mntmWindPowerFarm = null;
-		Button btnWindPowerFarm = null;
-		SubMenuAndButtons wind = new SubMenuAndButtons(
-				sh, canvas,
-				menu, mntmWindPowerFarm,
-				StatMapControls.WIND.code(), StatMapControls.WIND.str(), 
-				StatMapControls.WIND.bound_x_pos(), StatMapControls.WIND.bound_y_pos(), 
-				StatMapControls.WIND.bound_x(), StatMapControls.WIND.bound_y(), 
-				btnWindPowerFarm, StatMapControls.WIND.button()
-				);
+		for( StatMapControls s : StatMapControls.values() ) {
+	
+			menusAndButtons.put(
+												s.name(),
+												new GameMenusAndButtons(
+														sh, canvas, menu,
+														s.code(), s.str(), 
+														s.bound_x_pos(), s.bound_y_pos(), 
+														s.bound_x(), s.bound_y(), 
+														s.button()
+														)
+												);
+		}
 	}
 	
 	/**

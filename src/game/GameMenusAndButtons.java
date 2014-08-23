@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Shell;
  * @author nelsoncs
  *
  */
-public class SubMenuAndButtons {
+public class GameMenusAndButtons {
 	
 	Shell sh;
 	MapCanvas canvas;
@@ -45,32 +45,30 @@ public class SubMenuAndButtons {
 	 * @param button
 	 * @param buttonString
 	 */
-	public SubMenuAndButtons(
+	public GameMenusAndButtons(
 			Shell sh,
 			final MapCanvas canvas,
 			Menu menu, 
-			MenuItem menuItem,
 			final char placeStructure, 
 			String menuString, 
 			int bound_x_pos, 
 			int bound_y_pos, 
 			int bound_x, 
 			int bound_y, 
-			Button button, 
 			String buttonString
 			) {
 		
 		this.sh = sh;
 		this.canvas = canvas;
 		this.menu = menu;
-		this.menuItem = menuItem;
+		this.menuItem = null;
 		this.menuString = menuString;
 		this.placeStructure = placeStructure;
 		this.bound_x_pos = bound_x_pos; 
 		this.bound_y_pos = bound_y_pos; 
 		this.bound_x = bound_x; 
 		this.bound_y = bound_y; 
-		this.button = button; 
+		this.button = null; 
 		this.buttonString = buttonString;
 		
 		
